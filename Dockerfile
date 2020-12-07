@@ -1,6 +1,6 @@
 FROM scratch
 
-COPY bin/testing-github-action /go/bin/testing-github-action
+COPY bin/testing-github-action /usr/bin/testing-github-action
 
 EXPOSE 3000
-ENTRYPOINT ["/go/bin/testing-github-action"]
+ENTRYPOINT ["/usr/bin/testing-github-action"]
