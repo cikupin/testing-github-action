@@ -11,14 +11,14 @@ func NewRepository() *Repository {
 	return &Repository{}
 }
 
-func (r *Repository) Get() {
+func (r *Repository) Get() error {
 	fmt.Println("[Repo.Get] add 2 seconds delay...")
 	time.Sleep(2 * time.Second)
-	return
+	return nil
 }
 
-func (r *Repository) Set() {
+func (r *Repository) Set() error {
 	fmt.Println("[Repo.Set] add 1 seconds delay...")
 	time.Sleep(1 * time.Second)
-	return
+	return nil
 }
