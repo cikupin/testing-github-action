@@ -20,6 +20,10 @@ jobs:
 
       - name: Build
         run: make build
+
+      - name: Get release tags
+        id: extractversion
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -40,7 +44,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            cikupin/testing-github-action:${{ steps.extractversion.outputs.version }}
+            cikupin/testing-github-action:${{ steps.extractversion.outputs.tag }}
       
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
