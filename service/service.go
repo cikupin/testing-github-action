@@ -23,3 +23,10 @@ func (s *Svc) Process() {
 
 	s.repo.Get()
 }
+
+func (s *Svc) Insert() {
+	fmt.Println("[Svc.Insert] Inside process service, additional process takes time 500ms")
+	time.Sleep(500 * time.Millisecond)
+
+	s.repo.Set()
+}

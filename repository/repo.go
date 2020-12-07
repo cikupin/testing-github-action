@@ -16,3 +16,9 @@ func (r *Repository) Get() {
 	time.Sleep(2 * time.Second)
 	return
 }
+
+func (r *Repository) Set() {
+	fmt.Println("[Repo.Set] add 1 seconds delay...")
+	time.Sleep(1 * time.Second)
+	return
+}

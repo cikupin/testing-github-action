@@ -25,8 +25,8 @@ func NewHdlr(s *service.Svc) *Hdlr {
 	}
 }
 
-func (h *Hdlr) SetData(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("[Handler.SetData] Going to handler, additional process 400ms")
+func (h *Hdlr) GetData(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("[Handler.GetData] Going to handler, additional process 400ms")
 	time.Sleep(400 * time.Millisecond)
 
 	h.svc.Process()
@@ -39,5 +39,36 @@ func (h *Hdlr) SetData(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(resp)
+}
+
+func (h *Hdlr) SetData(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("[Handler.SetData] Going to handler, additional process 400ms")
+	time.Sleep(400 * time.Millisecond)
+
+	h.svc.Process()
+	fmt.Println()
+
+	resp := Response{
+		Status:  "OK",
+		Message: "data successfully being inserted",
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(resp)
+}
+
+func (h *Hdlr) ErrorData(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("[Handler.ErrorData] Going to handler, additional process 400ms")
+	fmt.Println()
+
+	resp := Response{
+		Status:       "ERROR",
+		ErrorMessage: "Opps, something wrong happened",
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusInternalServerError)
 	json.NewEncoder(w).Encode(resp)
 }
