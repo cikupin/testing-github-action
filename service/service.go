@@ -17,9 +17,18 @@ func NewSvc(r *repository.Repository) *Svc {
 	}
 }
 
-func (s *Svc) Process() {
+func (s *Svc) Process() error {
 	fmt.Println("[Svc.Process] Inside process service, additional process takes time 785ms")
 	time.Sleep(785 * time.Millisecond)
 
 	s.repo.Get()
+	return nil
+}
+
+func (s *Svc) Insert() error {
+	fmt.Println("[Svc.Insert] Inside process service, additional process takes time 500ms")
+	time.Sleep(500 * time.Millisecond)
+
+	s.repo.Set()
+	return nil
 }
