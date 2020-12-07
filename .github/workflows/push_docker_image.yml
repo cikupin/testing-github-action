@@ -19,7 +19,7 @@ jobs:
         run: make test
 
       - name: Build
-        run: make build
+        run: make build-for-scratch
 
       - name: Get release tags
         id: extractversion
