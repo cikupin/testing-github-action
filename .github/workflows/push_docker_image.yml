@@ -45,6 +45,7 @@ jobs:
           push: true
           tags: |
             cikupin/testing-github-action:${{ steps.extractversion.outputs.tag }}
+            cikupin/testing-github-action:latest
       
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
