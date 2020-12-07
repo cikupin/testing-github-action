@@ -23,11 +23,3 @@ func TestInsert(t *testing.T) {
 	result := svc.Insert()
 	assert.Nil(t, result)
 }
-
-func TestProcess_WrongResult(t *testing.T) {
-	repo := repository.NewRepository()
-	svc := service.NewSvc(repo)
-
-	result := svc.Process()
-	assert.NotNil(t, result)
-}
