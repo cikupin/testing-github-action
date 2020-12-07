@@ -3,6 +3,7 @@ package handler
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -61,6 +62,8 @@ func (h *Hdlr) SetData(w http.ResponseWriter, r *http.Request) {
 
 func (h *Hdlr) ErrorData(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("[Handler.ErrorData] Going to handler, additional process 400ms")
+	log.Println("[Handler.ErrorData] ERROR happened here!")
+	log.Println("[Handler.ErrorData] Now exiting process!")
 	fmt.Println()
 
 	resp := Response{
