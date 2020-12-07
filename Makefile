@@ -4,4 +4,9 @@ test:
 
 .PHONY: build
 build:
-	GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o bin/testing-github-action
+	GOOS=linux go build -ldflags="-w -s" -o bin/testing-github-action
+
+.PHONY: image-scratch
+image-scratch:
+	GOOS=linux go build -ldflags="-w -s" -o bin/testing-github-action
+	docker build -t cikupin/testing-github-action:latest .
