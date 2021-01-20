@@ -33,5 +33,5 @@ jobs:
 
       - name: test exit
         if: 40 < 50
-        run: echo '::set-failed message=unit_test_below_threshold'
+        run: exit 1
 
