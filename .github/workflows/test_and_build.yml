@@ -30,3 +30,10 @@ jobs:
 
       - name: Build
         run: make build
+
+      - name: test exit
+        if: 40 < 50
+        run: |-
+          echo "::error ::Total unit test coverage is below threshold"
+          exit 1
+
