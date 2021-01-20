@@ -32,6 +32,6 @@ jobs:
         run: make build
 
       - name: test exit
-        if: 40 < 50
+        if: 70 < 50
         run: exit 1
 
