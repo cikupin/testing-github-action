@@ -14,7 +14,7 @@ jobs:
       - name: get changed files
         id: getfile
         run: |
-          echo "::set-output name=files::$(du -a . | awk '{print $2}' | grep -e '.*\.mmd$' -e '.*\.mermaid$') | xargs"
+          echo "::set-output name=files::$(du -a . | awk '{print $2}' | grep -e '.*\.mmd$' -e '.*\.mermaid$' | xargs)"
 
       - name: mermaid files changed
         run: |
