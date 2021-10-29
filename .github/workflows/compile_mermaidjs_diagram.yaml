@@ -14,7 +14,7 @@ jobs:
       - name: get changed files
         id: getfile
         run: |
-          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -e '.*\.mmd$' -e '.*\.mermaid$' | xargs)"
+          echo "::set-output name=files::$(du -a . | awk '{print $2}' | grep -e '.*\.mmd$' -e '.*\.mermaid$') | xargs"
 
       - name: mermaid files changed
         run: |
@@ -38,7 +38,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A
+          git add .
           git commit -a -m "Compile mermaidjs diagram by Github Action"
 
       - name: Push changes
