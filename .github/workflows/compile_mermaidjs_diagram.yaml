@@ -42,7 +42,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -m -a "Compile mermaidjs diagram by Github Action"
+          git commit -m "Compile mermaidjs diagram by Github Action" -a
 
       - name: Push changes
         uses: ad-m/github-push-action@master
