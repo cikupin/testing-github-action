@@ -24,7 +24,7 @@ jobs:
         uses: neenjaw/compile-mermaid-markdown-action@0.3.1
         with:
           files: ${{ steps.getfile.outputs.files }}
-          output: '.resources'
+          output: '_img/mermaidjs'
         env:
           HIDE_CODEBLOCKS: 1
           ABSOLUTE_IMAGE_LINKS: 1
@@ -38,7 +38,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -m "Compile mermaidjs diagram by Github Action" -a
+          git add -A
+          git commit -a -m "Compile mermaidjs diagram by Github Action"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
