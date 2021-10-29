@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service        # Type of Kubernetes resource
+metadata:
+  name: testing-action-svc # Name of the Kubernetes resource
+  namespace: testing-action
+  labels:            # Labels that will be applied to this resource
+    app: testing-action-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 3000
+    protocol: TCP
+  selector:
+    app: testing-action

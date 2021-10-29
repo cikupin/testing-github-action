@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testing-action
+  namespace: testing-action
+  labels:
+    app: testing-action
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testing-action
+  template:
+    metadata:
+      labels:
+        app: testing-action
+    spec:
+      containers:
+      - name: testing-action
+        image: cikupin/testing-github-action:latest
+        ports:
+        - name: http
+          containerPort: 3000
+          protocol: TCP
+        command:
+          - testing-github-action
