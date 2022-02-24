@@ -13,6 +13,9 @@ jobs:
           - instance-3
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Run ansible ${{ matrix.node }}
         uses: dawidd6/action-ansible-playbook@v2
         with:
