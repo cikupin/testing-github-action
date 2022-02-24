@@ -1,0 +1,8 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Print instance-3
+      ansible.builtin.debug:
+        msg:
+        - "ini test dari instance-3"
+        - "lagi yeey"
