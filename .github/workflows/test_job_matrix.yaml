@@ -11,6 +11,7 @@ jobs:
           - instance-1
           - instance-2
           - instance-3
+          - instance-4 # test failed job in parallel task
 
     steps:
       - name: Checkout
@@ -21,3 +22,11 @@ jobs:
         with:
           playbook: main.yaml
           directory: ./_ansible/${{ matrix.instances }}
+  
+  finisher:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print finish
+        run: |
+          echo "Process finised"
+
