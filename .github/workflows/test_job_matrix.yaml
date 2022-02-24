@@ -22,9 +22,11 @@ jobs:
         with:
           playbook: main.yaml
           directory: ./_ansible/${{ matrix.instances }}
-  
+
   finisher:
     runs-on: ubuntu-latest
+    needs:
+      - build
     steps:
       - name: Print finish
         run: |
