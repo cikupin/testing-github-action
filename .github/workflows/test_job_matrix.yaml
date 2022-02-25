@@ -16,26 +16,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     continue-on-error: true
+    needs:
+      - init
+
     strategy:
       fail-fast: false
       matrix:
-        instances:
-          - instance-1
-          - instance-2
-          - instance-3
-          - instance-4 # test failed job in parallel task
-    needs:
-      - init
+        include:
+          - title: Instance ke-1
+            instance: instance-1
+          - title: Instance ke-2
+            instance: instance-2
+          - title: Instance ke-3
+            instance: instance-3
+          - title: Instance ke-4 # test failed job in parallel task
+            instance: instance-4
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Run ansible ${{ matrix.instances }}
+      - name: Run ansible ${{ matrix.title }}
         uses: dawidd6/action-ansible-playbook@v2
         with:
           playbook: main.yaml
-          directory: ./_ansible/${{ matrix.instances }}
+          directory: ./_ansible/${{ matrix.instance }}
 
   finisher:
     runs-on: ubuntu-latest
