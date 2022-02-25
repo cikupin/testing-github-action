@@ -3,6 +3,16 @@ name: 'Ansible job matrix'
 on: workflow_dispatch
 
 jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Print readme.txt
+        run: |
+          cat ./_ansible/readme.txt
+
   build:
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -14,11 +24,10 @@ jobs:
           - instance-2
           - instance-3
           - instance-4 # test failed job in parallel task
+    needs:
+      - init
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
       - name: Run ansible ${{ matrix.instances }}
         uses: dawidd6/action-ansible-playbook@v2
         with:
