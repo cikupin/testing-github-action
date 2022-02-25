@@ -28,6 +28,9 @@ jobs:
       - init
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Run ansible ${{ matrix.instances }}
         uses: dawidd6/action-ansible-playbook@v2
         with:
